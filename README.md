@@ -1,0 +1,2 @@
+# 7.Real-Time-Heart-Rate-Monitoring-Using-Remote-Photoplethysmography-and-Computer-Vision
+This project uses Remote Photoplethysmography (rPPG) and Computer Vision to estimate heart rate in real time through a webcam. It detects and tracks the face, analyzes subtle skin color changes caused by blood flow, processes the signal using filtering techniques, and calculates heart rate in BPM without requiring physical contact.
