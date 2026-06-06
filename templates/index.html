@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Rate Monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Real-Time Eye-Based Heart Rate Monitor</h1>
+            <p>Live video stream, eye-region rPPG, and BPM graph in one dashboard.</p>
+        </header>
+
+        <section class="top-row">
+            <div class="video-card">
+                <h2>Live Camera</h2>
+                <img id="video-feed" src="/video_feed" alt="Video feed">
+                <div class="bpm-box">
+                    <span>BPM:</span>
+                    <strong id="bpm-value">Measuring...</strong>
+                </div>
+            </div>
+
+            <div class="graph-card">
+                <h2>Heart Rate Trend</h2>
+                <canvas id="bpmChart" width="400" height="250"></canvas>
+            </div>
+        </section>
+
+        <footer>
+            <p>Press <strong>Ctrl+C</strong> in the terminal to stop the server.</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
