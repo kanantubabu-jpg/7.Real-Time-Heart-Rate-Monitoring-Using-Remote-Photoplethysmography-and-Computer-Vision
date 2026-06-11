@@ -2,7 +2,6 @@ import time
 import logging
 import threading
 import cv2
-import os
 from flask import Flask, render_template, Response, jsonify
 
 from age_detector import AgeDetector
@@ -14,12 +13,7 @@ app = Flask(__name__, static_folder="static", template_folder="templates")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 
 capture_backend = cv2.CAP_DSHOW if hasattr(cv2, 'CAP_DSHOW') else 0
-
-
-cap = None
-
-if os.environ.get("RENDER") is None:
-    cap = cv2.VideoCapture(0, capture_backend)
+cap = cv2.VideoCapture(0, capture_backend)
 face_detector = FaceDetector()
 eye_detector = EyeDetector()
 age_detector = AgeDetector()
@@ -68,7 +62,7 @@ def format_bpm(bpm):
 def capture_loop():
     global latest_frame, latest_status, previous_face_visible, previous_eye_status
 
-    while cap is not None and cap.isOpened():
+    while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             logging.warning('Webcam read failed.')
