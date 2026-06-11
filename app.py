@@ -2,6 +2,7 @@ import time
 import logging
 import threading
 import cv2
+import os
 from flask import Flask, render_template, Response, jsonify
 
 from age_detector import AgeDetector
@@ -13,7 +14,12 @@ app = Flask(__name__, static_folder="static", template_folder="templates")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 
 capture_backend = cv2.CAP_DSHOW if hasattr(cv2, 'CAP_DSHOW') else 0
-cap = cv2.VideoCapture(0, capture_backend)
+
+
+cap = None
+
+if os.environ.get("RENDER") is None:
+    cap = cv2.VideoCapture(0, capture_backend)
 face_detector = FaceDetector()
 eye_detector = EyeDetector()
 age_detector = AgeDetector()
