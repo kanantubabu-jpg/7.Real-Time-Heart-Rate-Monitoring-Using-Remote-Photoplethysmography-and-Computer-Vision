@@ -68,7 +68,7 @@ def format_bpm(bpm):
 def capture_loop():
     global latest_frame, latest_status, previous_face_visible, previous_eye_status
 
-    while cap.isOpened():
+    while cap is not None and cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             logging.warning('Webcam read failed.')
